@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% include 'profile_form.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+    .job {
+        font-weight: bolder;
+    }
+</style>
+
+<div style="text-align:center;">
+    {% for message in messages %}
+
+
+    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong></strong>{{ message }}
+    </div>
+
+    {% endfor %}
+</div>
+
+<section class="py-5 mt-8">
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-12 text-center mx-auto">
+                <form action="{% url 'job' %}" method="GET">
+                    <select name="category" id="category">
+                        <option value="all">Category</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Android Development">Android Development</option>
+                        <option value="Artificial Intelligent">Artificial Intelligent</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Graphics Design">Graphics Design</option>
+                        <option value="Content Writting">Content Writting</option>
+                        <option value="Research Parer">Research Parer</option>
+                        <option value="Microsoft Excell">Microsoft Excell</option>
+                        <option value="Microsoft World">Microsoft World</option>
+                    </select>
+
+                    <button type="submit"
+                        style="border:none; width:73px; border:1px solid black;border-radius:5px;height: 29px;">Filter</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">
+
+            <style>
+                .skills {
+                    background-color: rgb(0, 151, 118);
+                    font-size: 19px;
+                    border-radius: 5px;
+                }
+
+                .text-muted {
+                    text-align: justify;
+                }
+            </style>
+
+            {% for job_database in job_database reversed %}
+
+
+
+            <div class="col mb-4" style="border: 1px solid rgb(177, 177, 177); position: relative;">
+                <div>
+                    <div class="py-4">
+                        <span class="badge skills mb-2">${{ job_database.job_amount }}</span>
+                        <span class="text-muted" style="float: right;"><small>{{ job_database.date }}</small></span>
+                        <h4 class="fw-bold">{{ job_database.job_category }}</h4>
+                        <p class="text-muted">{{ job_database.job_detail }}</p>
+                        <p class="text-muted">Buyer Name: {{ job_database.name }}</p>
+                        <a href="{% url 'job_request' job_database.pk %}"><button style="border: none; border:1px solid rgb(177, 177, 177);background-color: rgb(0, 151, 118); color: white;
+                            border-radius: 5px;position: absolute; bottom: 10px;"><b>
+                                    Job Request</b></button></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

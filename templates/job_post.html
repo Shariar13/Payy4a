@@ -1,0 +1,625 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<style>
+    .job_post {
+        border: 1px solid rgb(199, 199, 199);
+    }
+
+    form {
+        width: 70%;
+        margin: auto;
+    }
+
+    .post_a_job {
+        font-weight: bolder;
+    }
+
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
+
+    body {
+        padding: 29px;
+        margin-top: 73px;
+    }
+
+    .profile-header {
+        background: #fff;
+        width: 100%;
+        display: flex;
+        height: 190px;
+        position: relative;
+        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-img {
+        float: left;
+        width: 340px;
+        height: 200px;
+    }
+
+    .profile-img img {
+        border-radius: 50%;
+        height: 230px;
+        width: 230px;
+        border: 5px solid #fff;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        z-index: 5;
+        background: #fff;
+    }
+
+    .profile-nav-info {
+        float: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    .profile-nav-info h3 {
+        font-variant: small-caps;
+        font-size: 2rem;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+
+    .profile-nav-info .address {
+        display: flex;
+        font-weight: bold;
+        color: #777;
+    }
+
+    .profile-nav-info .address p {
+        margin-right: 5px;
+    }
+
+    .profile-option {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        outline: none;
+        background: rgb(0, 151, 118);
+    }
+
+    .profile-option:hover {
+        background: #fff;
+        border: 1px solid rgb(0, 151, 118);
+    }
+
+    .profile-option:hover .notification i {
+        color: rgb(0, 151, 118);
+    }
+
+    .profile-option:hover span {
+        background: rgb(0, 151, 118);
+    }
+
+    .profile-option .notification i {
+        color: #fff;
+        font-size: 1.2rem;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .profile-option .notification .alert-message {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #fff;
+        color: rgb(0, 151, 118);
+        border: 1px solid rgb(0, 151, 118);
+        padding: 5px;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+
+    .main-bd {
+        width: 100%;
+        display: flex;
+        padding-right: 15px;
+    }
+
+    .profile-side {
+        width: 300px;
+        background: #fff;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+        padding: 90px 30px 20px;
+        font-family: "Bree Serif", serif;
+        margin-left: 10px;
+        z-index: 99;
+    }
+
+    .profile-side p {
+        margin-bottom: 7px;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .profile-side p i {
+        color: rgb(0, 151, 118);
+        margin-right: 10px;
+    }
+
+    .mobile-no i {
+        transform: rotateY(180deg);
+        color: rgb(0, 151, 118);
+    }
+
+    .profile-btn {
+        display: flex;
+    }
+
+    button.chatbtn,
+    button.createbtn {
+        border: 0;
+        padding: 10px;
+        width: 100%;
+        border-radius: 3px;
+        background: rgb(0, 151, 118);
+        color: #fff;
+        font-family: "Bree Serif";
+        font-size: 1rem;
+        margin: 5px 2px;
+        cursor: pointer;
+        outline: none;
+        margin-bottom: 10px;
+        transition: background 0.3s ease-in-out;
+        box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    button.chatbtn:hover,
+    button.createbtn:hover {
+        background: black;
+    }
+
+    button.chatbtn i,
+    button.createbtn i {
+        margin-right: 5px;
+    }
+
+    .user-rating {
+        display: flex;
+    }
+
+    .user-rating h3 {
+        font-size: 2.5rem;
+        font-weight: 200;
+        margin-right: 5px;
+        letter-spacing: 1px;
+        color: #666;
+    }
+
+    .user-rating .no-of-user-rate {
+        font-size: 0.9rem;
+    }
+
+    .rate {
+        padding-top: 6px;
+    }
+
+    .rate i {
+        font-size: 0.9rem;
+        color: rgb(0, 151, 118);
+    }
+
+    .nav {
+        width: 100%;
+        z-index: -1;
+    }
+
+    .nav ul {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none;
+        height: 40px;
+        background: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav ul li {
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .nav ul li:hover,
+    .nav ul li.active {
+        box-shadow: 0px -3px 0px rgba(288, 0, 70, 0.9) inset;
+    }
+
+    .profile-body {
+        width: 100%;
+        z-index: -1;
+    }
+
+    .tab {
+        display: none;
+    }
+
+    .tab {
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+        .profile-side {
+            width: 250px;
+            padding: 90px 15px 20px;
+        }
+
+        .profile-img img {
+            height: 200px;
+            width: 200px;
+            left: 50px;
+            top: 50px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        body {
+            margin: 0 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .profile-img {
+            float: left;
+            width: 100%;
+            height: 200px;
+        }
+
+        .profile-img img {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            left: 0px;
+        }
+
+        .profile-nav-info {
+            text-align: center;
+        }
+
+        .profile-option {
+            right: 20px;
+            top: 75%;
+            transform: translateY(50%);
+        }
+
+        .main-bd {
+            flex-direction: column;
+            padding-right: 0;
+        }
+
+        .profile-side {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px 0;
+        }
+
+        .profile-nav-info .address {
+            justify-content: center;
+        }
+
+        .user-rating {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 400px) {
+        body {
+            margin: 0;
+        }
+
+
+        .profile-option {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 15px;
+            top: 83%;
+        }
+
+        .profile-option .notification .alert-message {
+            top: -3px;
+            right: -4px;
+            padding: 4px;
+            height: 15px;
+            width: 15px;
+            font-size: 0.7rem;
+        }
+
+        .profile-nav-info h3 {
+            font-size: 1.9rem;
+        }
+
+        .profile-nav-info .address p,
+        .profile-nav-info .address span {
+            font-size: 0.7rem;
+        }
+    }
+
+    #see-more-bio,
+    #see-less-bio {
+        color: blue;
+        cursor: pointer;
+        text-transform: lowercase;
+    }
+
+    .tab h1 {
+        font-family: "Bree Serif", sans-serif;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+    }
+
+    .card {
+        width: 100%;
+        border: 1px solid rgb(201, 201, 201);
+        border-radius: 5px;
+    }
+
+    /* * Post widget * */
+
+    ul {
+        list-style-type: none;
+    }
+
+    .btn {
+        padding: .4em 1em;
+
+        background-color: transparent;
+        color: #6b7270;
+
+        border: none;
+        cursor: pointer;
+    }
+
+    .widget-post {
+        width: 73%;
+        min-height: 100px;
+        height: auto;
+        border-radius: 5px;
+        border: 1px solid #eaeaea;
+        box-shadow: 0 1px 1px grey;
+
+        background-color: #fff;
+
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .widget-post__header {
+        padding: .2em .5em;
+
+        background-color: #eaeaea;
+        color: #3f5563;
+    }
+
+    .widget-post__title {
+        font-size: 18px;
+    }
+
+    .widget-post__content {
+        width: 100%;
+        height: 50%;
+    }
+
+    .widget-post__textarea {
+        width: 100%;
+        height: 100%;
+        padding: .5em;
+
+        border: none;
+        resize: none;
+    }
+
+    .widget-post__textarea:focus {
+        outline: none;
+    }
+
+    .widget-post__options {
+        padding: .5em;
+    }
+
+
+    .post-actions__label {
+        cursor: pointer;
+    }
+
+    .widget-post__actions {
+        width: 100%;
+        padding: .5em;
+    }
+
+    .post--actions {
+        position: relative;
+        padding: .5em;
+
+        background-color: #f5f5f5;
+        color: #a2a6a7;
+    }
+
+    .post-actions__attachments {
+        display: inline-block;
+        width: 60%;
+    }
+
+    .attachments--btn {
+        background-color: #eaeaea;
+        color: rgb(0, 151, 118);
+
+        border-radius: 1.5em;
+    }
+
+    .post-actions__widget {
+        display: inline-block;
+        width: 38%;
+        text-align: right;
+    }
+
+    .post-actions__publish {
+        width: 120px;
+
+        background-color: rgb(0, 151, 118);
+        color: #fff;
+
+        border-radius: 1.5em;
+    }
+
+    .scroller::-webkit-scrollbar {
+        display: none;
+    }
+
+    .is--hidden {
+        display: none;
+    }
+
+    .sr-only {
+        width: 1px;
+        height: 1px;
+
+        clip: rect(1px, 1px, 1px, 1px);
+        -webkit-clip-path: inset(50%);
+        clip-path: inset(50%);
+
+        overflow: hidden;
+        white-space: nowrap;
+
+        position: absolute;
+        top: 0;
+
+    }
+
+
+    /* *  Placeholder contrast * */
+
+    ::-moz-placeholder {
+        color: #666;
+    }
+
+
+
+    :-moz-placeholder {
+        color: #666;
+    }
+</style>
+
+<div class="container job_post p-5">
+    <form action="{% url 'job_form' %}" method="POST" id="widget-form" class="widget-post__form" name="form"
+        aria-label="post widget" enctype="multipart/form-data">
+        <h5><b>Post Your Desire Job: </b></h5>
+        <hr>
+
+
+        <div style="text-align:center;">
+            {% for message in messages %}
+
+
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            {% endfor %}
+
+        </div>
+        {% csrf_token %}
+        <div class="widget-post__content">
+            <label for="post-content" class="sr-only">Share</label>
+            <input name="name" type="hidden" value="{{ user.get_full_name }}">
+            <input name="username" type="hidden" value="{{ user.username }}">
+            <input name="email" type="hidden" value="{{ user.email }}">
+            <select style="background-color: white;border:none;border:1px solid rgb(199, 199, 199);" id="job"
+                name="job_category">
+                <optgroup label="Category">
+                    <option value="I am a Buyer">Category</option>
+                </optgroup>
+                <optgroup label="Web">
+                    <option value="Front-End Developer">Front-End Developer</option>
+                    <option value="Back-End Developer">Back-End Developer</option>
+                    <option value="Python Developer">Python Developer</option>
+                    <option value="Rails Developer">Rails Developer</option>
+                    <option value="Web Designer">Web Designer</option>
+                    <option value="PHP Developer">PHP Developer</option>
+                    <option value="Node.js Developer">Node.js Developer</option>
+                    <option value="Full-Stack Developer">Full-Stack Developer</option>
+                    <option value="Wordpress Developer">Wordpress Developer</option>
+                </optgroup>
+                <optgroup label="Mobile">
+                    <option value="Android Developer">Android Developer</option>
+                    <option value="iOS Developer">iOS Developer</option>
+                    <option value="Mobile Designer">Mobile Designer</option>
+                </optgroup>
+                <optgroup label="Design">
+                    <option value="Graphics Designer">Graphics Designer</option>
+                    <option value="Animation Designer">Animation Designer</option>
+                    <option value="Cartoon Designer">Cartoon Designer</option>
+                    <option value="Logo Designer">Logo Designer</option>
+                    <option value="Figma Designer">Figma Designer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="Front-End Designer">Front-End Designer</option>
+                </optgroup>
+            </select>
+            <input name="job_amount" style="width: 99px;" type="number" placeholder="Amount">
+            <textarea name="job_detail" id="post-content" class="widget-post__textarea scroller"
+                placeholder="Please write the details of this job"></textarea>
+        </div>
+        <div class="widget-post__options is--hidden" id="stock-options">
+        </div>
+        <div class="widget-post__actions post--actions">
+            <div class="post-actions__attachments">
+                <button type="button" class="btn post-actions__upload attachments--btn">
+                    <label style="color: rgb(0, 151, 118);" for="upload-image" class="post-actions__label">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        upload image
+                    </label>
+                </button>
+                <input name="photo" type="file" id="upload-image" accept="image/*" multiple>
+            </div>
+            <div class="post-actions__widget">
+                <button type="submit" style="background-color: rgb(0, 151, 118);"
+                    class="btn post-actions__publish">publish</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock content %}

@@ -1,0 +1,398 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div style="width: 93%; margin:auto;margin-top:99px; text-align: center;">
+    <h5><b>{{ category }}</b></h5>
+    <hr>
+
+</div>
+<div class="container">
+
+    <style>
+        img {
+            height: 300px;
+        }
+
+        .btn {
+            background-color: rgb(0, 151, 118);
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+
+
+    <div class="row">
+
+        {% for gig_database in web_development %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+
+        {% for gig_database in graphics_design %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in php_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in python_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in rails_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in node_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in wordpress_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in android_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in ios_developer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in animation %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in cartoon_designer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in logo_designer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in figma_designer %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in cyber_security %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in content_writing %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in research_paper %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+        {% for gig_database in artificial_intelligent %}
+
+
+
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                {% if gig_database.photo %}
+                <img src="{{ gig_database.photo.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ gig_database.name }}</h5>
+                    <span><b>{{ gig_database.job_role }}</b></span>
+                    <p class="card-text">{{ gig_database.bio }}</p>
+                    <a href="{% url 'employee_profile' gig_database.pk %}" class="btn">Hire</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock content %}

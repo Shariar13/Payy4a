@@ -1,0 +1,496 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<style>
+  .card {
+    background-color: white;
+    border: 1px solid rgb(0, 151, 118);
+    border-radius: 5px;
+    width: 300px;
+    text-align: left;
+    color: rgb(0, 151, 118);
+  }
+
+  .card:hover {
+    background-color: rgb(239, 239, 239);
+    cursor: pointer;
+  }
+
+  .button {
+    border: none;
+    background-color: white;
+  }
+
+
+
+  .hire {
+    font-weight: bolder;
+  }
+
+  svg {
+    color: rgb(0, 151, 118);
+  }
+
+  @media screen and (max-width:479px) {
+    .card {
+      width: 100%;
+    }
+
+  }
+</style>
+<br>
+<br>
+<div style="text-align:center;">
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong></strong>{{ message }}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="container py-4 py-xl-5">
+  <div class="row mb-5">
+    <div class="col-md-8 col-xl-6 text-center mx-auto">
+      <h5><b>Categories</b></h5>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4">
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-code-slash" viewBox="0 0 16 16">
+                  <path
+                    d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z" />
+                </svg>
+              </div>
+              <input name="category" value="Web Development" type="hidden">
+              <h4 class="card-title">Web Development</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.258.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.258l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                </svg>
+              </div>
+              <input name="category" value="Graphics Design" type="hidden">
+              <h4 class="card-title">Graphics Design</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-filetype-py" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M14 4.5V14a2 2 0 0 1-2 2H7v-1h5a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM0 11.85h1.6c.289 0 .533.06.732.179.201.117.355.276.46.477.105.201.158.427.158.677 0 .25-.054.476-.25.677-.106.199-.26.357-.464.474a1.452 1.452 0 0 1-.732.173H.79v1.342H0V11.85Zm2.06 1.714a.795.795 0 0 0 .085-.381c0-.227-.062-.4-.185-.521-.123-.122-.294-.182-.513-.182H.788v1.406h.66a.794.794 0 0 0 .374-.082.574.574 0 0 0 .238-.24Zm2.963.75v1.535H4.23v-1.52L2.89 11.85h.876l.853 1.696h.032l.856-1.696h.855l-1.339 2.464Z" />
+                </svg>
+              </div>
+              <input name="category" value="Python Developer" type="hidden">
+              <h4 class="card-title">Python Development</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-filetype-rb" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M14 4.5V14a2 2 0 0 1-2 2H8v-1h4a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM0 11.85h1.597c.297 0 .55.053.758.158.21.104.369.25.478.44.111.19.257.412.257.668a1.18 1.18 0 0 1-.727 1.122l.803 1.611h-.885l-.7-1.491H.782v1.491H0V11.85Zm.782.621v1.292h.689c.218 0 .391-.053.518-.158.13-.106.194-.264.194-.475 0-.213-.065-.376-.194-.489a.74.74 0 0 0-.507-.17h-.7Zm4.426 3.378H3.544V11.85h1.67c.357 0 .643.087.858.26.215.175.322.425.322.724a.94.94 0 0 1-.09.422.79.79 0 0 1-.244.293 1.002 1.002 0 0 1-.351.251v.035c.252.025.31.063.445.141a.846.846 0 0 1 .322.325.986.986 0 0 1 .123.51c0 .238-.06.441-.178.61-.12.257-.284.296-.492.386a1.85 1.85 0 0 1-.721.132Zm-.179-3.404h-.7v1.07h.521c.178 0 .323-.022.434-.065a.497.497 0 0 0 .249-.185.52.52 0 0 0 .082-.296.486.486 0 0 0-.155-.384c-.102-.093-.245-.14-.43-.14Zm.05 1.62h-.75v1.19h.589c.31 0 .534-.05.67-.147a.503.503 0 0 0 .206-.434.614.614 0 0 0-.082-.325.51.51 0 0 0-.24-.21.946.946 0 0 0-.393-.074Z" />
+                </svg>
+              </div>
+              <input name="category" value="Rails Developer" type="hidden">
+              <h4 class="card-title">Rails Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-filetype-php" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .251-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.295.185.522Zm4.48 2.666V11.85h-.79v1.626H4.153V11.85h-.79v3.999h.79v-1.714h1.682v1.714h.79Zm.703-3.999h1.6c.288 0 .533.06.732.179.2.117.354.276.46.477.105.201.158.427.158.677 0 .25-.054.476-.251.677-.106.199-.26.357-.463.474a1.452 1.452 0 0 1-.733.173H8.12v1.342h-.791V11.85Zm2.06 1.714a.795.795 0 0 0 .084-.381c0-.227-.061-.4-.184-.521-.123-.122-.294-.182-.513-.182h-.66v1.406h.66a.794.794 0 0 0 .375-.082.574.574 0 0 0 .237-.24Z" />
+                </svg>
+              </div>
+              <input name="category" value="PHP Developer" type="hidden">
+              <h4 class="card-title">PHP Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-filetype-js" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M14 4.5V14a2 2 0 0 1-2 2H8v-1h4a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM3.186 15.29a1.176 1.176 0 0 1-.111-.449h.765a.578.578 0 0 0 .255.384c.07.049.153.087.249.114.095.028.202.041.319.041.254 0 .302-.023.413-.07a.559.559 0 0 0 .255-.193.507.507 0 0 0 .085-.29.387.387 0 0 0-.153-.326c-.101-.08-.255-.144-.462-.193l-.619-.143a1.72 1.72 0 0 1-.539-.214 1.001 1.001 0 0 1-.351-.367 1.068 1.068 0 0 1-.123-.524c0-.244.063-.457.19-.639.127-.181.303-.322.528-.422.224-.1.483-.149.776-.149.305 0 .564.05.78.152.225.102.383.239.5.41.12.17.186.359.2.566h-.75a.56.56 0 0 0-.12-.258.624.624 0 0 0-.247-.181.923.923 0 0 0-.369-.068c-.217 0-.388.05-.513.152a.472.472 0 0 0-.184.384c0 .121.048.22.143.3a.97.97 0 0 0 .405.175l.62.143c.218.05.406.12.566.211.25.09.285.21.375.358.09.148.135.335.135.56 0 .247-.063.466-.188.656a1.225 1.225 0 0 1-.539.439c-.234.105-.52.158-.858.158-.254 0-.476-.03-.665-.09a1.404 1.404 0 0 1-.478-.252 1.13 1.13 0 0 1-.29-.375Zm-3.104-.033A1.32 1.32 0 0 1 0 14.791h.765a.576.576 0 0 0 .073.27.499.499 0 0 0 .454.246c.19 0 .33-.055.422-.254.092-.11.138-.265.138-.466v-2.745h.79v2.725c0 .44-.119.774-.357 1.005-.236.23-.564.345-.984.345a1.59 1.59 0 0 1-.569-.094 1.145 1.145 0 0 1-.407-.266 1.14 1.14 0 0 1-.243-.39Z" />
+                </svg>
+              </div>
+              <input name="category" value="Node.js Developer" type="hidden">
+              <h4 class="card-title">Node.js Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-wordpress" viewBox="0 0 16 16">
+                  <path
+                    d="M12.633 7.653c0-.848-.305-1.435-.566-1.892l-.08-.13c-.317-.51-.594-.958-.594-1.48 0-.63.478-1.218 1.152-1.218.02 0 .039.002.058.003l.031.003A6.838 6.838 0 0 0 8 1.137 6.855 6.855 0 0 0 2.266 4.23c.25.005.313.009.442.009.717 0 1.828-.087 1.828-.087.37-.022.414.521.044.565 0 0-.371.044-.785.065l2.5 7.434 1.5-4.506-1.07-2.929c-.369-.022-.719-.065-.719-.065-.37-.022-.326-.588.043-.566 0 0 1.134.087 1.808.087.718 0 1.83-.087 1.83-.087.37-.022.413.522.043.566 0 0-.372.043-.785.065l2.48 7.377.684-2.287.054-.173c.27-.86.469-1.495.469-2.046zM1.137 8a6.864 6.864 0 0 0 3.868 6.176L1.73 5.206A6.837 6.837 0 0 0 1.137 8z" />
+                  <path
+                    d="M6.061 14.583 8.121 8.6l2.109 5.78c.014.033.03.064.049.094a6.854 6.854 0 0 1-4.218.109zm7.96-9.876c.03.219.047.453.047.706 0 .696-.13 1.479-.522 2.458l-2.096 6.06a6.86 6.86 0 0 0 2.572-9.224z" />
+                  <path fill-rule="evenodd"
+                    d="M0 8c0-4.411 3.589-8 8-8 4.41 0 8 3.589 8 8s-3.59 8-8 8c-4.411 0-8-3.589-8-8zm.367 0c0 4.209 3.424 7.633 7.633 7.633 4.208 0 7.632-3.424 7.632-7.633C15.632 3.79 12.208.367 8 .367 3.79.367.367 3.79.367 8z" />
+                </svg>
+              </div>
+              <input name="category" value="Wordpress Developer" type="hidden">
+              <h4 class="card-title">Wordpress Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-android2" viewBox="0 0 16 16">
+                  <path
+                    d="m10.213 1.471.691-1.26c.046-.083.03-.147-.048-.192-.085-.038-.15-.019-.195.058l-.7 1.27A4.832 4.832 0 0 0 8.005.941c-.688 0-1.34.135-1.956.404l-.7-1.27C5.303 0 5.239-.018 5.154.02c-.078.046-.094.11-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.697 3.697 0 0 0 3.5 5.02h9c0-.75-.208-1.44-.623-2.072a4.266 4.266 0 0 0-1.664-1.476ZM6.22 3.303a.367.367 0 0 1-.267.11.35.35 0 0 1-.263-.11.366.366 0 0 1-.107-.264.37.37 0 0 1 .107-.265.351.351 0 0 1 .263-.11c.103 0 .193.037.267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264Zm4.101 0a.351.351 0 0 1-.262.11.366.366 0 0 1-.268-.11.358.358 0 0 1-.112-.264c0-.103.037-.191.112-.265a.367.367 0 0 1 .268-.11c.104 0 .19.037.262.11a.367.367 0 0 1 .107.265c0 .102-.035.19-.107.264ZM3.5 11.77c0 .294.104.544.311.75.208.204.46.307.76.307h.758l.01 2.182c0 .276.097.51.292.703a.961.961 0 0 0 .7.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182c0 .276.097.51.292.703a.972.972 0 0 0 .71.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76c.291 0 .54-.103.749-.308.207-.205.311-.455.311-.75V5.365h-9v6.404Zm10.495-6.587a.983.983 0 0 0-.702.278.91.91 0 0 0-.293.685v4.063c0 .271.098.501.293.69a.97.97 0 0 0 .702.284c.28 0 .517-.095.712-.284a.924.924 0 0 0 .293-.69V6.146a.91.91 0 0 0-.293-.685.995.995 0 0 0-.712-.278Zm-12.702.283a.985.985 0 0 1 .712-.283c.273 0 .507.094.702.283a.913.913 0 0 1 .293.68v4.063a.932.932 0 0 1-.288.69.97.97 0 0 1-.707.284.986.986 0 0 1-.712-.284.924.924 0 0 1-.293-.69V6.146c0-.264.098-.491.293-.68Z" />
+                </svg>
+              </div>
+              <input name="category" value="Android Developer" type="hidden">
+              <h4 class="card-title">Android Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-apple"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.525.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.125-.508.139-1.653.589-1.968.607-.325.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                  <path
+                    d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.525.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.125-.508.139-1.653.589-1.968.607-.325.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z" />
+                </svg>
+              </div>
+              <input name="category" value="iOS Developer" type="hidden">
+              <h4 class="card-title">iOS Developer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-person-rolodex" viewBox="0 0 16 16">
+                  <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                  <path
+                    d="M1 1a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5.5.5 0 0 1 1 0 .5.5 0 0 0 .5.5h.5a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6.707L6 1.293A1 1 0 0 0 5.293 1H1Zm0 1h4.293L6 2.707A1 1 0 0 0 6.707 3H15v10h-.085a1.5 1.5 0 0 0-2.4-.63C11.885 11.223 10.554 10 8 10c-2.555 0-3.886 1.224-4.514 2.37a1.5 1.5 0 0 0-2.4.63H1V2Z" />
+                </svg>
+              </div>
+              <input name="category" value="Animation Designer" type="hidden">
+              <h4 class="card-title">Animation</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 25z" />
+                  <path
+                    d="M11.315 10.014a.5.5 0 0 1 .548.736A4.498 4.498 0 0 1 7.965 13a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .548-.736h.005l.017.005.067.015.252.055c.215.046.515.108.857.259.693.124 1.522.242 2.152.242.63 0 1.46-.118 2.152-.242a26.58 26.58 0 0 0 1.109-.224l.067-.015.017-.004.005-.002zM4.756 4.566c.763-1.424 4.02-.12.952 3.434-4.496-1.596-2.35-4.298-.952-3.434zm6.488 0c1.398-.864 3.544 1.838-.952 3.434-3.067-3.554.19-4.858.952-3.434z" />
+                </svg>
+              </div>
+              <input name="category" value="Cartoon Designer" type="hidden">
+              <h4 class="card-title">Cartoon Designer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-circle-fill" viewBox="0 0 16 16">
+                  <circle cx="8" cy="8" r="8" />
+                </svg>
+              </div>
+              <input name="category" value="Logo Designer" type="hidden">
+              <h4 class="card-title">Logo Designer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-person-video2" viewBox="0 0 16 16">
+                  <path d="M10 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                  <path
+                    d="M2 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2ZM1 3a1 1 0 0 1 1-1h2v2H1V3Zm4 10V2h9a1 1 0 0 1 1 1v9c0 .285-.12.543-.31.725C14.15 11.494 12.822 10 10 10c-3.037 0-4.345 1.73-4.798 3H5Zm-4-2h3v2H2a1 1 0 0 1-1-1v-1Zm3-1H1V8h3v2Zm0-3H1V5h3v2Z" />
+                </svg>
+              </div>
+              <input name="category" value="Figma Designer" type="hidden">
+              <h4 class="card-title">Figma Designer</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
+                  <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                  <path
+                    d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 25 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 25H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z" />
+                </svg>
+              </div>
+              <input name="category" value="Video Editing" type="hidden">
+              <h4 class="card-title">Video Editing</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-laptop-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M2.5 2A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h25a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z" />
+                </svg>
+              </div>
+              <input name="category" value="Cyber Security" type="hidden">
+              <h4 class="card-title">Cyber Security</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .325.325l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                  <path fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                </svg>
+              </div>
+              <input name="category" value="Content Writing" type="hidden">
+              <h4 class="card-title">Content Writing</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-card-heading" viewBox="0 0 16 16">
+                  <path
+                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                  <path
+                    d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z" />
+                </svg>
+              </div>
+              <input name="category" value="Research Writing" type="hidden">
+              <h4 class="card-title">Research Paper</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+    <form action="{% url 'employee_list' %}" method="GET">
+      {% csrf_token %}
+      <button class="button" type="submit">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-2">
+              <div
+                class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"
+                style="background-color:  transparent; color: black;font-weight: bold;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-cpu-fill" viewBox="0 0 16 16">
+                  <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                  <path
+                    d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z" />
+                </svg>
+              </div>
+              <input name="category" value="Artificial Intelligent" type="hidden">
+              <h4 class="card-title">Artificial Intelligent</h4>
+            </div>
+          </div>
+        </div>
+      </button>
+    </form>
+
+  </div>
+
+  {% endblock content %}
